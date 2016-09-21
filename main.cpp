@@ -6,15 +6,6 @@
 
 using namespace std;
 
-State initialize_problem(int n) {
-    State initial_state(n);
-    for(int i = 0; i < n; i++) {
-        Queen q(i,i);
-        initial_state.add_queen(q);
-    }
-    return initial_state;
-}
-
 State min_value_successor(vector<State> successors) {
     return successors[0]; // mock
 }
@@ -35,19 +26,16 @@ State Hillclimb(State current) {
     return State(0);
 }
 
-void print_solution(State final_state) {
-    // mock
-}
-
 int main() {
     int dim;
     cout << "Escolha a dimensao do tabuleiro: ";
     cin >> dim;
-    State initial_state = initialize_problem(dim);
-    State solution = Hillclimb(initial_state);
+    State initial_state(dim);
+    initial_state.print();
+    /*State solution = Hillclimb(initial_state);
     if(solution.get_n() == 0)
         cout << "Erro" << endl;
     else
-        print_solution(solution);
+        print_solution(solution);*/
     return 0;
 }

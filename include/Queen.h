@@ -14,12 +14,12 @@ class Queen
         int get_y();
         void set_x(int);
         void set_y(int);
-        int walk_up(int);
-        int walk_down(int);
+        int walk_up(int); // takes one step up on the board
+        int walk_down(int); // takes one step down on the board
     protected:
     private:
-        int x;
-        int y;
+        int x; // x coordinate on the board
+        int y; // y coordinate on the board
 };
 
 #endif // QUEEN_H
