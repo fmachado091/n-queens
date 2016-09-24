@@ -12,6 +12,7 @@ class State
         std::vector<Queen> get_queens();
         void add_queen(Queen); // adds queen to list of queens on the board
         std::vector<State> get_successors(); // possible successors for state
+        State best_successor(); // best of the possible successors for state
         int number_of_attacks(); // number of possible attacks between 2 queens
         int get_n();
         void print(); // print board on screen

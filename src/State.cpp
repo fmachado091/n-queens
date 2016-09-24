@@ -32,6 +32,24 @@ std::vector<State> State::get_successors() {
     return successors; // mock
 }
 
+/* Gets the list of possible succesors for the state enad returns the best of
+ * them (with the smallest number of attacks between two queens. */
+State State::best_successor() {
+    std::vector<State> successors = get_successors();
+    int number_of_successors = successors.size();
+    int min_index = 0;
+    int min_attacks = 2*n + 1; // given n queens, there is at most 2n attacks
+    int attacks;
+    for(int i = 0; i < number_of_successors; i++) {
+        attacks = successors[i].number_of_attacks();
+        if(attacks < min_attacks) {
+            min_index = i;
+            min_attacks = attacks;
+        }
+    }
+    return successors[min_index];
+}
+
 int State::number_of_attacks() {
     return 0; // mock
 }

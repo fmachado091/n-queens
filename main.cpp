@@ -6,18 +6,13 @@
 
 using namespace std;
 
-State min_value_successor(vector<State> successors) {
-    return successors[0]; // mock
-}
-
 State Hillclimb(State current) {
     int n = current.get_n();
     State next(n);
     int iteration = 1;
     vector<State> successors;
     while(iteration <= MAX_ITERATIONS) {
-        successors = current.get_successors();
-        next = min_value_successor(successors);
+        next = current.best_successor();
         if(current.number_of_attacks() <= next.number_of_attacks())
             return current;
         current = next;
