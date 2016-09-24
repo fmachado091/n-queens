@@ -27,16 +27,16 @@ void Queen::set_y(int coord_y) {
 }
 
 int Queen::walk_up(int n) {
-    if(y < n-1) {
-        ++y;
+    if(x > 0) {
+        --x;
         return GO_ON;
     }
     return STOP;
 }
 
 int Queen::walk_down(int n) {
-    if(y > 0) {
-        --y;
+    if(x < n-1) {
+        ++x;
         return GO_ON;
     }
     return STOP;
