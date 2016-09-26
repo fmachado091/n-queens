@@ -4,7 +4,6 @@
 #define STOP  0
 #define GO_ON 1
 
-
 class Queen
 {
     public:
