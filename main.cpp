@@ -11,7 +11,7 @@ State Hillclimb(State current) {
     while(true) { // unless an error occurs, the program always find a solution
         next = current.best_successor();
         if(current.number_of_attacks() <= next.number_of_attacks()) {
-            cout << "\nNumber of iterations: " << iteration << endl;
+            //cout << "\nNumber of iterations: " << iteration << endl;
             return current;
         }
         current = next;
@@ -26,15 +26,22 @@ int main() {
     cout << "Choose the board's dimension: ";
     cin >> dim;
     State initial_state(dim);
-    cout << "\nInitial state:\n" << endl;
-    initial_state.print();
     State solution = Hillclimb(initial_state);
-    cout << "\nFinal state:\n" << endl;
+    // if it doesn't find solution, then get a new random initial state
+    // and try again
+    while(solution.number_of_attacks() > 0) {
+        State initial_state(dim);
+        solution = Hillclimb(initial_state);
+    }
+    cout << "\nSolution:\n" << endl;
     if(solution.get_n() == -1)
         cout << "Error" << endl;
     else {
         solution.print();
-        cout << "\nNumber of attacks: " << solution.number_of_attacks() << endl;
+        //cout << "\nNumber of attacks: " << solution.number_of_attacks() << endl;
     }
+    /* Just so the program doesn't quit immediately after its execution
+    string str;
+    cin >> str;*/
     return 0;
 }
